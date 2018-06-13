@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import NotaList from './NotaList'
 
 class NotasApp extends Component {
@@ -38,7 +38,7 @@ class NotasApp extends Component {
     }));
   }
 
-  handleOnClickDelete = (event, nota) => {
+  handleOnClickDelete = nota => {
     const {notas} = this.state
     const indexNota = notas.indexOf(nota)
     const notasAntes = notas.slice(0,indexNota)

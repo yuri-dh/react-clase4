@@ -8,7 +8,7 @@ const NotaList = ({notas, onClickDelete}) =>
       key={i}
       titulo={nota.titulo}
       texto={nota.texto}
-      onClickDelete={event => onClickDelete(event, nota)}
+      onClickDelete={() => onClickDelete(nota)}
     />)
   )
 
