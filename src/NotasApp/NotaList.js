@@ -2,14 +2,13 @@ import React from 'react'
 import Nota from './Nota'
 import PropTypes from 'prop-types';
 
-const NotaList = ({notas, onClickNota}) =>
+const NotaList = ({notas, onClickDelete}) =>
   notas.map((nota, i)=> (
     <Nota
       key={i}
       titulo={nota.titulo}
       texto={nota.texto}
-      i={i}
-      onClickNota={onClickNota}
+      onClickDelete={event => onClickDelete(event, nota)}
     />)
   )
 
@@ -18,7 +17,7 @@ NotaList.propTypes = {
     titulo: PropTypes.string,
     texto: PropTypes.string
   })).isRequired,
-  onClickNota: PropTypes.func.isRequired
+  onClickDelete: PropTypes.func.isRequired
 }
 
 
