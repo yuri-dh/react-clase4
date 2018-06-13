@@ -11,16 +11,16 @@ class NotasApp extends Component {
     };
   }
 
-  handleChangeTitulo = e => {
-    this.setState({ titulo: e.target.value })
+  handleChangeTitulo = event => {
+    this.setState({ titulo: event.target.value })
   }
 
-  handleChangeTexto = e => {
-    this.setState({ texto: e.target.value })
+  handleChangeTexto = event => {
+    this.setState({ texto: event.target.value })
   }
 
-  handleSubmit = e => {
-    e.preventDefault();
+  handleSubmit = event => {
+    event.preventDefault();
     const {titulo, texto, notas} = this.state
     if (!texto.length) {
       alert('Debes escribir un texto');
@@ -38,10 +38,11 @@ class NotasApp extends Component {
     }));
   }
 
-  handleOnClickNota = nota => {
+  handleOnClickDelete = (event, nota) => {
     const {notas} = this.state
-    const notasAntes = notas.slice(0,nota)
-    const notasDespues = notas.slice(nota+1, notas.length)
+    const indexNota = notas.indexOf(nota)
+    const notasAntes = notas.slice(0,indexNota)
+    const notasDespues = notas.slice(indexNota+1, notas.length)
     this.setState(() => ({
       notas: [...notasAntes, ...notasDespues],
       titulo: '',
@@ -77,7 +78,7 @@ class NotasApp extends Component {
         </div>
 
         <div className="row">
-          <NotaList notas={this.state.notas} onClickNota={this.handleOnClickNota}/>
+          <NotaList notas={this.state.notas} onClickDelete={this.handleOnClickDelete}/>
         </div>
 
       </div>
